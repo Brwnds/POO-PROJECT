@@ -1,0 +1,35 @@
+<!-- minha_app/templates/minha_app/base.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetinho duda</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+        <!-- Sticky header -->
+<header class="header-outer">
+	<div class="header-inner responsive-wrapper">
+		<div class="header-logo">
+			<img src="https://assets.codepen.io/285131/acme-2.svg" />
+		</div>
+		<nav class="header-navigation">
+			<a href="">Home</a>
+			<a href="login">Login</a>
+			<a href="#">Blog</a>
+			<a href="#">Contact Us</a>
+			<button>Menu</button>
+		</nav>
+	</div>
+</header>
+
+    <main>
+        {% block content %}
+        <!-- O conteúdo específico de cada página será inserido aqui -->
+        {% endblock %}
+    </main>
+</body>
+</html>

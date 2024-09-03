@@ -20,6 +20,6 @@ from loja import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('loja/', views.home, name='home'),
+    path('', views.home, name='home'),
     path('loja/login', views.login, name='login'),
 ]

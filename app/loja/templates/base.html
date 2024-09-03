@@ -12,18 +12,18 @@
 <body>
         <!-- Sticky header -->
 <header class="header-outer">
-	<div class="header-inner responsive-wrapper">
-		<div class="header-logo">
-			<img src="https://assets.codepen.io/285131/acme-2.svg" />
-		</div>
-		<nav class="header-navigation">
-			<a href="{% url 'home' %}">Home</a>
-			<a href="{% url 'login' %}">Login</a>
-			<a href="#">Blog</a>
-			<a href="#">Contact Us</a>
-			<button>Menu</button>
-		</nav>
-	</div>
+    <div class="header-inner responsive-wrapper">
+        <div class="header-logo">
+            <img src="https://assets.codepen.io/285131/acme-2.svg" />
+        </div>
+        <nav class="header-navigation">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact Us</a>
+            <button>Menu</button>
+        </nav>
+    </div>
 </header>
 
     <main>
@@ -31,5 +31,6 @@
         <!-- O conteúdo específico de cada página será inserido aqui -->
         {% endblock %}
     </main>
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

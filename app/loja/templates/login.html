@@ -1,31 +1,33 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block extra_css %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetinho duda</title>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-{% endblock %}
-
-{% block content %}
+</head>
+<body>
 
 <div id="div_form">
     <form class="form">
-        <span class="signup">Sign Up</span>
-        <input type="email" placeholder="Email address" class="form--input">
-        <input type="password" placeholder="Password" class="form--input">
-        <input type="password" placeholder="Confirm password" class="form--input">
-        
+        <h1>Entrar</h1>
+        <label for="username">Usuário</label>
+        <input type="text" id="username" name="username" placeholder="Digite seu usuário" class="form--input" required>
+
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" placeholder="Digite sua senha" class="form--input" required>
+
         <div class="form--marketing">
-            <input id="okayToEmail" type="checkbox">
-            <label for="okayToEmail" class="checkbox">
-              I want to join the newsletter
-            </label>
+            <p>Ainda não é cadastrado? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
         </div>
-        <button class="form--submit">
-            Sign up
+        
+        <button type="submit" class="form--submit">
+            Entrar
         </button>
     </form>
 </div>
 
-{% endblock %}
+</body>
+</html>
 

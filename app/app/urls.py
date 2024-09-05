@@ -20,6 +20,10 @@ from loja import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('loja/login', views.login, name='login'),
+    path('home/', views.home, name='home'),
+    path('', views.login, name='login'),
+    path('cadastro/', views.cadastro, name='cadastro'),
+    path('catalogo/', views.catalogo, name='catalogo'),
+    path('basket/', views.basket, name='basket'),
+    path('adm/', views.admin, name='adm'),
 ]

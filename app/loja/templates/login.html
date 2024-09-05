@@ -10,21 +10,28 @@
 <body>
 
 <div id="div_form">
-    <form class="form">
+    <form class="form" method="POST">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% csrf_token %}
         <h1>Entrar</h1>
         <label for="username">Usuário</label>
         <input type="text" id="username" name="username" placeholder="Digite seu usuário" class="form--input" required>
-
+    
         <label for="password">Senha</label>
         <input type="password" id="password" name="password" placeholder="Digite sua senha" class="form--input" required>
-
+    
         <div class="form--marketing">
             <p>Ainda não é cadastrado? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
         </div>
-        
-        <button type="submit" class="form--submit">
-            Entrar
-        </button>
+    
+        <button type="submit" class="form--submit">Entrar</button>
     </form>
 </div>
 

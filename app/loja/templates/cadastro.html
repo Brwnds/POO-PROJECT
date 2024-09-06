@@ -1,1 +1,43 @@
-<div> cadastro </div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Nome do Projeto</title>
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+</head>
+<body>
+
+<div id="div_form">
+    <form class="form" method="POST">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        {% csrf_token %}
+        <h1>Cadastrar</h1>
+    
+        <label for="username">Usuário</label>
+        <input type="text" id="username" name="username" placeholder="Escolha um nome de usuário" class="form--input" required>
+    
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" placeholder="Crie uma senha" class="form--input" required>
+    
+        <label for="confirm_password">Confirme a Senha</label>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirme sua senha" class="form--input" required>
+    
+        <button type="submit" class="form--submit">Cadastrar</button>
+    
+        <div class="form--marketing">
+            <p>Já tem uma conta? <a href="{% url 'login' %}">Voltar ao Login</a></p>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

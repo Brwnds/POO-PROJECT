@@ -1,157 +1,174 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap");
 
-/* Cores */
 :root {
- --primary-color: #fcae7e;
- --secondary-color: #f58a8a;
- --bg-color: #fff7f3;
- --text-color: #333;
- --button-bg: #fc735e;
- --button-hover-bg: #f58a8a;
- --input-border: #e2e2e2;
+  --primary-color: #d19411;
+  --secondary-color: #f58a8a;
+  --bg-color: #fff7f3;
+  --text-color: #333;
+  --button-bg: #fc735e;
+  --button-hover-bg: #f58a8a;
+  --input-border: #e2e2e2;
 }
 
 *,
 *:before,
 *:after {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
- font-family: "Quicksand", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
 }
 
 body {
- background-color: var(--bg-color);
- background: linear-gradient(145deg, #f2f2f2 0%, #eaeaea 76%);
- display: flex;
- flex-direction: column;
- align-items: center;
- min-height: 100vh;
- padding: 20px;
- color: var(--text-color);
+  background-color: var(--bg-color);
+  background: linear-gradient(145deg, #f2f2f2 0%, #eaeaea 76%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  color: var(--text-color);
 }
 
 header {
- text-align: center;
- margin-bottom: 50px; /* Aumentado para dar mais espaço */
- width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+  width: 100%;
 }
 
 h1 {
- font-family: "Dancing Script", cursive;
- font-size: clamp(2.5rem, 4vw, 3rem);
- font-weight: 700;
- color: var(--text-color);
- margin-bottom: 20px; /* Adicionada margem para o título */
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2.5rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 20px;
 }
 
 nav {
- margin-top: 10px;
+  margin-top: 10px;
 }
 
 .categoria-btn {
- background-color: var(--button-bg);
- color: white;
- border: none;
- border-radius: 10px;
- padding: 10px 20px;
- cursor: pointer;
- margin: 5px;
- font-size: 1rem;
- transition: background-color 0.3s ease;
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .categoria-btn:hover {
- background-color: var(--button-hover-bg);
+  background-color: var(--button-hover-bg);
 }
 
-/* Estilos para a barra de busca */
 .search-container {
- display: flex;
- justify-content: center;
- margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 #search {
- border: 1px solid var(--input-border);
- border-radius: 5px;
- padding: 15px; /* Aumentado o padding */
- font-size: 1.2rem; /* Aumentado o tamanho da fonte */
- width: 400px; /* Aumentado a largura */
- margin-right: 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 1.2rem;
+  width: 400px;
+  margin-right: 10px;
 }
 
 #search-btn {
- background-color: var(--button-bg);
- color: white;
- border: none;
- border-radius: 5px;
- padding: 10px 20px;
- cursor: pointer;
- font-size: 1rem;
- transition: background-color 0.3s ease;
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
 }
 
 #search-btn:hover {
- background-color: var(--button-hover-bg);
+  background-color: var(--button-hover-bg);
 }
 
 .container {
- display: flex;
- max-width: 1200px;
- width: 100%;
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .sidebar {
- width: 25%;
- padding: 15px;
- background-color: #fff;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- border-radius: 5px;
- margin-right: 20px;
+  width: 20%;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-right: 20px;
 }
 
 .sidebar h2 {
- font-size: 1.5rem;
- margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .sidebar h3 {
- font-size: 1.5rem;
- color: var(--secondary-color); /* Altere para a cor desejada */
- margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 10px;
 }
 
 .categoria-lista h3 {
- margin-top: 15px;
- font-size: 1.2rem;
+  margin-top: 15px;
+  font-size: 1.2rem;
 }
 
 .categoria-lista ul {
- list-style-type: none;
- padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .categoria-lista li {
- margin-bottom: 10px;
- font-size: 1rem;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.categoria-lista input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.categoria-lista label {
+  font-size: 1em;
+  color: #333;
 }
 
 #catalogo {
- flex: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .card-container {
- display: flex;
- flex-wrap: wrap;
- justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .card-row {
- display: flex;
- width: 100%;
- justify-content: space-between;
- margin-bottom: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .card {
@@ -159,22 +176,22 @@ nav {
   border: 1px solid var(--input-border);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 30%;
-  height: 500px; /* Aumentado para 500px para caber todos os elementos */
-  margin-bottom: 20px;
+  width: 32%;
+  height: 430px;
+  margin-bottom: 30px;
   padding: 15px;
   text-align: center;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribuir o conteúdo uniformemente */
+  justify-content: space-between;
 }
 
 .card img {
   width: 100%;
-  height: 150px; /* Altura ajustada para a imagem */
+  height: 150px;
   border-radius: 10px;
-  object-fit: cover; /* Garantir que a imagem se ajuste ao card */
+  object-fit: cover;
 }
 
 .card h3 {
@@ -184,7 +201,7 @@ nav {
 }
 
 .card .descricao {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   margin-bottom: 10px;
 }
 
@@ -212,21 +229,103 @@ nav {
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 15px; /* Aumentado para garantir uma boa aparência */
+  padding: 10px 0;
   cursor: pointer;
   font-size: 1rem;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background-color 0.3s ease;
 }
 
 .card .botao-comprar:hover {
   background-color: var(--button-hover-bg);
 }
-/* Estilos específicos para o bolo de cenoura */
-.bolo-cenoura-img {
-  width: 60%; /* Define a largura como 60% do container */
-  height: auto; /* Mantém a proporção da imagem */
-  display: block; /* Garante que a imagem seja tratada como um bloco */
-  margin: 0 auto; /* Centraliza a imagem dentro do card */
+
+.carrinho {
+  width: 25%;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-left: 20px;
 }
 
+.carrinho h2 {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+.carrinho-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid var(--input-border);
+}
+
+.carrinho-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.carrinho-item p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.carrinho-item .quantidade {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+}
+
+.remover-item {
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.remover-item:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.total {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+#finalizar-compra {
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+#finalizar-compra:hover {
+  background-color: var(--button-hover-bg);
+}

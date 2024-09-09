@@ -3,168 +3,250 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/catalogo.css' %}">
+   <link rel="stylesheet" href="{% static 'css/catalogo.css' %}">
 {% endblock %}
 
 {% block content %}
 <!-- Cabeçalho -->
 <header>
-    <h1>Bem-vindo ao Cardápio de Bolos</h1>
-    <div class="search-container">
-        <input type="text" id="search" placeholder="Buscar por bolo...">
-        <button id="search-btn">Buscar</button>
-    </div>
+   <h1>Bem-vindo ao Catálogo de Bolos</h1>
+   <div class="search-container">
+       <input type="text" id="search" placeholder="Buscar por bolo...">
+       <button id="search-btn">Buscar</button>
+   </div>
 </header>
 
 <!-- Layout do Catálogo -->
 <div class="container">
-    <!-- Barra Lateral -->
-    <aside class="sidebar">
-        <h2>Categorias</h2>
-        <div class="categoria-lista">
-            <h3>Bolos Tradicionais:</h3>
-            <ul>
-                <li>Bolo de Cenoura com Chocolate</li>
-                <li>Bolo de Milho</li>
-                <li>Bolo de Fubá</li>
-            </ul>
-
-            <h3>Bolos Recheados:</h3>
-            <ul>
-                <li>Morango dos Deuses</li>
-                <li>Prestígio</li>
-                <li>Brigadeiro</li>
-            </ul>
-
-            <h3>Tamanhos:</h3>
-            <ul>
-                <li>Grande</li>
-                <li>Médio</li>
-                <li>Pequeno</li>
-            </ul>
-        </div>
-    </aside>
-    
-    <!-- Conteúdo do Catálogo -->
-    <div id="catalogo">
-        <section class="categoria">
-            <div class="card-container">
-                <!-- Linha 1 -->
-                <div class="card-row">
-                    <!-- Card Bolo de Cenoura -->
-                    <div class="card">
-                        <img class="bolo-cenoura-img" src="https://i.pinimg.com/736x/86/36/05/863605eadbfc00ef756820c8ab473f60.jpg" alt="Bolo de Cenoura com Chocolate">
-
-                        <h3>Bolo de Cenoura com Chocolate</h3>
-                        <p class="descricao">Clássico e sempre amado, esse bolo combina a maciez da massa de cenoura...</p>
-                        <p class="preco" id="preco-bolo-1">R$ 25,00</p>
-                        <p class="tamanho">Tamanhos:</p>
-                        <select id="tamanho-bolo-1" class="tamanho-select">
-                            <option value="p" data-preco="25.00">Pequeno - R$ 25,00</option>
-                            <option value="m" data-preco="35.00">Médio - R$ 35,00</option>
-                            <option value="g" data-preco="45.00">Grande - R$ 45,00</option>
-                        </select>
-                        <button class="botao-comprar">Comprar</button>
-                    </div>
+   
+<!-- Barra Lateral -->
+<aside class="sidebar">
+    <h2>Categorias</h2>
+    <div class="categoria-lista">
+        <h3>Bolos Tradicionais:</h3>
+        <ul>
+            <li><label for="bolo-cenoura">Bolo de Cenoura</label></li>
+            <li><label for="bolo-milho">Bolo de Milho</label></li>
+            <li><label for="bolo-fuba">Bolo de Fubá</label></li>
+        </ul>
  
-                    <!-- Card Bolo de Milho -->
-                    <div class="card">
-                        <img src="https://i.pinimg.com/236x/0e/65/6c/0e656cc2b545c689aed44b4c6bdfe703.jpg" alt="Bolo de Milho">
-                        <h3>Bolo de Milho</h3>
-                        <p class="descricao">Um bolo rústico e delicioso, feito com milho verde fresco...</p>
-                        <p class="preco" id="preco-bolo-2">R$ 20,00</p>
-                        <p class="tamanho">Tamanhos:</p>
-                        <select id="tamanho-bolo-2" class="tamanho-select">
-                            <option value="p" data-preco="20.00">Pequeno - R$ 20,00</option>
-                            <option value="m" data-preco="30.00">Médio - R$ 30,00</option>
-                            <option value="g" data-preco="40.00">Grande - R$ 40,00</option>
-                        </select>
-                        <button class="botao-comprar">Comprar</button>
-                    </div>
+        <h3>Bolos Recheados:</h3>
+        <ul>
+            <li><label for="morango-deuses">Morango dos Deuses</label></li>
+            <li><label for="prestigio">Prestígio</label></li>
+            <li><label for="brigadeiro">Brigadeiro</label></li>
+        </ul>
  
-                    <!-- Card Bolo de Fubá -->
-                    <div class="card">
-                        <img src="https://i.pinimg.com/236x/90/94/e7/9094e77c66b0886ba54c06bb9828443b.jpg" alt="Bolo de Fubá">
-                        <h3>Bolo de Fubá</h3>
-                        <p class="descricao">Um bolo tradicional de sabor simples e aconchegante...</p>
-                        <p class="preco" id="preco-bolo-3">R$ 18,00</p>
-                        <p class="tamanho">Tamanhos:</p>
-                        <select id="tamanho-bolo-3" class="tamanho-select">
-                            <option value="p" data-preco="18.00">Pequeno - R$ 18,00</option>
-                            <option value="m" data-preco="28.00">Médio - R$ 28,00</option>
-                            <option value="g" data-preco="38.00">Grande - R$ 38,00</option>
-                        </select>
-                        <button class="botao-comprar">Comprar</button>
-                    </div>
-                </div>
- 
-                <!-- Linha 2 -->
-                <div class="card-row">
-                    <!-- Card Morango dos Deuses -->
-                    <div class="card">
-                        <img src="https://i.pinimg.com/236x/ef/4f/74/ef4f74d9042005d700ca3b303f316634.jpg" alt="Morango dos Deuses">
-                        <h3>Morango dos Deuses</h3>
-                        <p class="descricao">Delicie-se com este bolo recheado com morangos frescos e cobertura suave...</p>
-                        <p class="preco" id="preco-bolo-4">R$ 40,00</p>
-                        <p class="tamanho">Tamanhos:</p>
-                        <select id="tamanho-bolo-4" class="tamanho-select">
-                            <option value="p" data-preco="40.00">Pequeno - R$ 40,00</option>
-                            <option value="m" data-preco="50.00">Médio - R$ 50,00</option>
-                            <option value="g" data-preco="60.00">Grande - R$ 60,00</option>
-                        </select>
-                        <button class="botao-comprar">Comprar</button>
-                    </div>
- 
-                    <!-- Card Prestígio -->
-                    <div class="card">
-                        <img src="https://i.pinimg.com/236x/39/23/b8/3923b8441b11e46218dfe3b5ac900b25.jpg" alt="Prestígio">
-                        <h3>Prestígio</h3>
-                        <p class="descricao">Bolo com uma deliciosa camada de coco e chocolate...</p>
-                        <p class="preco" id="preco-bolo-5">R$ 35,00</p>
-                        <p class="tamanho">Tamanhos:</p>
-                        <select id="tamanho-bolo-5" class="tamanho-select">
-                            <option value="p" data-preco="35.00">Pequeno - R$ 35,00</option>
-                            <option value="m" data-preco="45.00">Médio - R$ 45,00</option>
-                            <option value="g" data-preco="55.00">Grande - R$ 55,00</option>
-                        </select>
-                        <button class="botao-comprar">Comprar</button>
-                    </div>
- 
-                    <!-- Card Brigadeiro -->
-                    <div class="card">
-                        <img src="https://i.pinimg.com/236x/37/04/bb/3704bb367a475bee7698af041f136c22.jpg" alt="Brigadeiro">
-                        <h3>Brigadeiro</h3>
-                        <p class="descricao">O bolo perfeito para os amantes de chocolate, com um recheio cremoso...</p>
-                        <p class="preco" id="preco-bolo-6">R$ 28,00</p>
-                        <p class="tamanho">Tamanhos:</p>
-                        <select id="tamanho-bolo-6" class="tamanho-select">
-                            <option value="p" data-preco="28.00">Pequeno - R$ 28,00</option>
-                            <option value="m" data-preco="38.00">Médio - R$ 38,00</option>
-                            <option value="g" data-preco="48.00">Grande - R$ 48,00</option>
-                        </select>
-                        <button class="botao-comprar">Comprar</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <h3>Tamanhos:</h3>
+        <ul>
+            <li><label for="tamanho-grande">Grande</label></li>
+            <li><label for="tamanho-medio">Médio</label></li>
+            <li><label for="tamanho-pequeno">Pequeno</label></li>
+        </ul>
     </div>
+</aside>
 
-{% endblock %}
+   <!-- Conteúdo do Catálogo -->
+   <div id="catalogo">
+       <section class="categoria">
+           <div class="card-container">
+               <!-- Linha 1 -->
+               <div class="card-row">
+                   <!-- Card Bolo de Cenoura -->
+                   <div class="card">
+                       <img class="bolo-cenoura-img" src="https://i.pinimg.com/736x/86/36/05/863605eadbfc00ef756820c8ab473f60.jpg" alt="Bolo de Cenoura com Chocolate">
+                       <h3>Bolo de Cenoura com Chocolate</h3>
+                       <p class="preco" id="preco-bolo-1">R$ 25,00</p>
+                       <p class="tamanho">Tamanhos:</p>
+                       <select id="tamanho-bolo-1" class="tamanho-select">
+                           <option value="p" data-preco="25.00">Pequeno - R$ 25,00</option>
+                           <option value="m" data-preco="35.00">Médio - R$ 35,00</option>
+                           <option value="g" data-preco="45.00">Grande - R$ 45,00</option>
+                       </select>
+                       <button class="botao-comprar" data-product="Cenoura ">Comprar</button>
+                   </div>
+                   <!-- Card Bolo de Milho -->
+                   <div class="card">
+                       <img src="https://i.pinimg.com/236x/0e/65/6c/0e656cc2b545c689aed44b4c6bdfe703.jpg" alt="Bolo de Milho">
+                       <h3>Bolo de Milho</h3>
+                       <p class="preco" id="preco-bolo-2">R$ 20,00</p>
+                       <p class="tamanho">Tamanhos:</p>
+                       <select id="tamanho-bolo-2" class="tamanho-select">
+                           <option value="p" data-preco="20.00">Pequeno - R$ 20,00</option>
+                           <option value="m" data-preco="30.00">Médio - R$ 30,00</option>
+                           <option value="g" data-preco="40.00">Grande - R$ 40,00</option>
+                       </select>
+                       <button class="botao-comprar" data-product="Milho">Comprar</button>
+                   </div>
+                   <!-- Card Bolo de Fubá -->
+                   <div class="card">
+                       <img src="https://i.pinimg.com/236x/90/94/e7/9094e77c66b0886ba54c06bb9828443b.jpg" alt="Bolo de Fubá">
+                       <h3>Bolo de Fubá</h3>
+                       <p class="preco" id="preco-bolo-3">R$ 18,00</p>
+                       <p class="tamanho">Tamanhos:</p>
+                       <select id="tamanho-bolo-3" class="tamanho-select">
+                           <option value="p" data-preco="18.00">Pequeno - R$ 18,00</option>
+                           <option value="m" data-preco="28.00">Médio - R$ 28,00</option>
+                           <option value="g" data-preco="38.00">Grande - R$ 38,00</option>
+                       </select>
+                       <button class="botao-comprar" data-product="Fubá">Comprar</button>
+                   </div>
+               </div>
+               <!-- Linha 2 -->
+               <div class="card-row">
+                   <!-- Card Morango dos Deuses -->
+                   <div class="card">
+                       <img src="https://i.pinimg.com/564x/89/6d/3f/896d3f64085d7bc6535ef13c10fbdcaf.jpg" alt="Morango dos Deuses">
+                       <h3>Morango dos Deuses</h3>
+                       <p class="preco" id="preco-bolo-4">R$ 40,00</p>
+                       <p class="tamanho">Tamanhos:</p>
+                       <select id="tamanho-bolo-4" class="tamanho-select">
+                           <option value="p" data-preco="40.00">Pequeno - R$ 40,00</option>
+                           <option value="m" data-preco="50.00">Médio - R$ 50,00</option>
+                           <option value="g" data-preco="60.00">Grande - R$ 60,00</option>
+                       </select>
+                       <button class="botao-comprar" data-product="Morango">Comprar</button>
+                   </div>
+                   <!-- Card Prestígio -->
+                   <div class="card">
+                       <img src="https://i.pinimg.com/736x/73/5e/d2/735ed244c23d7645a3b8c3b05e751eed.jpg" alt="Prestígio">
+                       <h3>Prestígio</h3>
+                       <p class="preco" id="preco-bolo-5">R$ 35,00</p>
+                       <p class="tamanho">Tamanhos:</p>
+                       <select id="tamanho-bolo-5" class="tamanho-select">
+                           <option value="p" data-preco="35.00">Pequeno - R$ 35,00</option>
+                           <option value="m" data-preco="45.00">Médio - R$ 45,00</option>
+                           <option value="g" data-preco="55.00">Grande - R$ 55,00</option>
+                       </select>
+                       <button class="botao-comprar" data-product="Prestígio">Comprar</button>
+                   </div>
+                   <!-- Card Brigadeiro -->
+                   <div class="card">
+                       <img src="https://i.pinimg.com/564x/df/e6/9a/dfe69a05961f8544431d182b8ff5d467.jpg" alt="Brigadeiro">
+                       <h3>Brigadeiro</h3>
+                       <p class="preco" id="preco-bolo-6">R$ 32,00</p>
+                       <p class="tamanho">Tamanhos:</p>
+                       <select id="tamanho-bolo-6" class="tamanho-select">
+                           <option value="p" data-preco="32.00">Pequeno - R$ 32,00</option>
+                           <option value="m" data-preco="42.00">Médio - R$ 42,00</option>
+                           <option value="g" data-preco="52.00">Grande - R$ 52,00</option>
+                       </select>
+                       <button class="botao-comprar" data-product="Brigadeiro">Comprar</button>
+                   </div>
+               </div>
+           </div>
+       </section>
+   </div>
 
-{% block extra_js %}
+   <!-- Carrinho de Compras -->
+   <aside id="carrinho" class="carrinho">
+       <h2>Carrinho de Compras</h2>
+       <div id="carrinho-itens"></div>
+       <p>Total: <span id="total">R$ 0,00</span></p>
+       <button id="finalizar-compra">Finalizar Compra</button>
+   </aside>
+</div>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const tamanhoSelect = document.querySelectorAll('.tamanho-select');
-      
-      tamanhoSelect.forEach(select => {
-        select.addEventListener('change', function() {
-          const precoElement = this.closest('.card').querySelector('.preco');
-          const selectedOption = this.options[this.selectedIndex];
-          const novoPreco = selectedOption.getAttribute('data-preco');
-          precoElement.textContent = `R$ ${parseFloat(novoPreco).toFixed(2)}`;
-        });
-      });
-    });
-</script>
+document.addEventListener('DOMContentLoaded', function () {
+    const botaoComprar = document.querySelectorAll('.botao-comprar');
+    const carrinhoItens = document.getElementById('carrinho-itens');
+    const totalElem = document.getElementById('total');
+    const finalizarCompraBtn = document.getElementById('finalizar-compra');
+    let total = 0;
 
+    botaoComprar.forEach(button => {
+        button.addEventListener('click', function () {
+            const productName = this.getAttribute('data-product');
+            const tamanhoSelect = this.previousElementSibling;
+            const tamanhoSelecionado = tamanhoSelect.options[tamanhoSelect.selectedIndex].textContent;
+            const preco = parseFloat(tamanhoSelect.options[tamanhoSelect.selectedIndex].getAttribute('data-preco'));
+
+            const identificadorItem = `${productName} - ${tamanhoSelecionado}`;
+            let item = document.querySelector(`.carrinho-item[data-id="${identificadorItem}"]`);
+            
+            if (item) {
+                // Item já existe, atualize a quantidade
+                let quantidadeElem = item.querySelector('.quantidade');
+                let quantidade = parseInt(quantidadeElem.textContent);
+                let precoItem = parseFloat(item.querySelector('.preco').textContent.replace('R$ ', '').replace(',', '.'));
+
+                quantidadeElem.textContent = quantidade + 1;
+                total += precoItem;
+                totalElem.textContent = `R$ ${total.toFixed(2)}`;
+            } else {
+                // Adiciona o item ao carrinho
+                item = document.createElement('div');
+                item.classList.add('carrinho-item');
+                item.setAttribute('data-id', identificadorItem);
+                item.innerHTML = `
+                    <p>${productName}</p>
+                    <p class="preco">R$ ${preco.toFixed(2)}</p>
+                    <button class="decrease">-</button>
+                    <span class="quantidade">1</span>
+                    <button class="increase">+</button>
+                    <button class="remover-item">Remover</button>
+                `;
+                carrinhoItens.appendChild(item);
+
+                // Atualiza o total
+                total += preco;
+                totalElem.textContent = `R$ ${total.toFixed(2)}`;
+            }
+
+            // Adiciona eventos de ajuste de quantidade
+            item.querySelector('.increase').addEventListener('click', function () {
+                const precoItem = parseFloat(item.querySelector('.preco').textContent.replace('R$ ', '').replace(',', '.'));
+                let quantidadeElem = item.querySelector('.quantidade');
+                let quantidade = parseInt(quantidadeElem.textContent);
+
+                total += precoItem;
+                totalElem.textContent = `R$ ${total.toFixed(2)}`;
+                quantidadeElem.textContent = quantidade + 1;
+            });
+
+            item.querySelector('.decrease').addEventListener('click', function () {
+                let quantidadeElem = item.querySelector('.quantidade');
+                let quantidade = parseInt(quantidadeElem.textContent);
+
+                if (quantidade > 1) {
+                    const precoItem = parseFloat(item.querySelector('.preco').textContent.replace('R$ ', '').replace(',', '.'));
+
+                    total -= precoItem;
+                    totalElem.textContent = `R$ ${total.toFixed(2)}`;
+                    quantidadeElem.textContent = quantidade - 1;
+                } else {
+                    total -= parseFloat(item.querySelector('.preco').textContent.replace('R$ ', '').replace(',', '.'));
+                    totalElem.textContent = `R$ ${total.toFixed(2)}`;
+                    item.remove();
+                }
+            });
+
+            // Adiciona evento de remoção do item
+            item.querySelector('.remover-item').addEventListener('click', function () {
+                const precoItem = parseFloat(item.querySelector('.preco').textContent.replace('R$ ', '').replace(',', '.'));
+                const quantidadeElem = item.querySelector('.quantidade');
+                const quantidade = parseInt(quantidadeElem.textContent);
+
+                total -= precoItem * quantidade;
+                totalElem.textContent = `R$ ${total.toFixed(2)}`;
+                item.remove();
+            });
+        });
+    });
+
+    // Evento de finalizar compra
+    finalizarCompraBtn.addEventListener('click', function () {
+        if (total > 0) {
+            alert(`Compra finalizada! Total: R$ ${total.toFixed(2)}`);
+            carrinhoItens.innerHTML = '';
+            total = 0;
+            totalElem.textContent = 'R$ 0,00';
+        } else {
+            alert('O carrinho está vazio!');
+        }
+    });
+});
+
+</script>
 {% endblock %}

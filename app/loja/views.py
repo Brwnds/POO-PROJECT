@@ -47,7 +47,8 @@ def cadastro(request):
 
 @login_required
 def catalogo(request):
-    return render(request, 'catalogo.html')
+    bolos = Bolo.objects.all()  # Busca todos os bolos do banco de dados
+    return render(request, 'catalogo.html', {'bolos': bolos})
 
 @login_required
 def basket(request):

@@ -26,4 +26,6 @@ urlpatterns = [
     path('catalogo/', views.catalogo, name='catalogo'),
     path('basket/', views.basket, name='basket'),
     path('adm/', views.admin, name='adm'),
+    path('adicionar_ao_carrinho/', views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
+    path('listar_carrinho/', views.listar_carrinho, name='listar_carrinho'),
 ]

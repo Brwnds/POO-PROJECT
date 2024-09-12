@@ -16,6 +16,9 @@
    </div>
 </header>
 
+<!-- Token CSRF -->
+<meta name="csrf-token" content="{{ csrf_token }}">
+
 <!-- Layout do Catálogo -->
 <div class="container">
    
@@ -45,9 +48,6 @@
         </ul>
     </div>
 </aside>
-
-    {% csrf_token %}
-    
    <!-- Conteúdo do Catálogo -->
 <div id="catalogo">
     <section class="categoria">
@@ -60,11 +60,11 @@
                     <p class="preco">Pequeno: R$ {{ bolo.preco_pequeno }}</p>
                     <p class="tamanho">Tamanhos:</p>
                     <select class="tamanho-select">
-                        <option value="p" data-preco="{{ bolo.preco_pequeno }}">P - R$ {{ bolo.preco_pequeno }}</option>
-                        <option value="m" data-preco="{{ bolo.preco_medio }}">M - R$ {{ bolo.preco_medio }}</option>
-                        <option value="g" data-preco="{{ bolo.preco_grande }}">G - R$ {{ bolo.preco_grande }}</option>
+                        <option value="P" data-preco="{{ bolo.preco_pequeno }}">P - R$ {{ bolo.preco_pequeno }}</option>
+                        <option value="M" data-preco="{{ bolo.preco_medio }}">M - R$ {{ bolo.preco_medio }}</option>
+                        <option value="G" data-preco="{{ bolo.preco_grande }}">G - R$ {{ bolo.preco_grande }}</option>
                     </select>
-                    <button class="botao-comprar" data-product-id="{{ bolo.id }}" data-product="{{ bolo.sabor }}">Comprar</button>
+                    <button class="botao-comprar" data-product-id="{{ bolo.id }}" data-product="{{ bolo.sabor }}">Comprar</button>                    
                 </div>
                 {% endfor %}
             </div>

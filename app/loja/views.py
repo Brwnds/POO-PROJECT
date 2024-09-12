@@ -61,19 +61,20 @@ def admin(request):
 @require_POST
 def adicionar_ao_carrinho(request):
     data = json.loads(request.body)
-    bolo_nome = data['bolo_nome']
-    tamanho = data['tamanho']
-    
-    # Encontra o bolo pelo nome
-    bolo = get_object_or_404(Bolo, sabor=bolo_nome)
-    
+    bolo_id = data['bolo_id']  # Agora recebemos o id do bolo
+    tamanho = data['tamanho'].upper()  # Converte o tamanho para maiúsculas
+
+    # Encontra o bolo pelo ID
+    bolo = get_object_or_404(Bolo, id=bolo_id)
+
     # Obtém o perfil do usuário
     profile = Profile.objects.get(user=request.user)
-    
+
     # Adiciona o bolo ao carrinho
     profile.adicionar_bolo_ao_carrinho(bolo, tamanho)
     
     return JsonResponse({'success': True})
+
 
 def listar_carrinho(request):
     profile = Profile.objects.get(user=request.user)

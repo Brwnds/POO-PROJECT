@@ -1,33 +1,32 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const botaoComprar = document.querySelectorAll('.botao-comprar');
-    const carrinhoItens = document.getElementById('carrinho-itens');
-    const totalElem = document.getElementById('total');
-    const finalizarCompraBtn = document.getElementById('finalizar-compra');
-    let total = 0;
-
-    botaoComprar.forEach(button => {
+    document.querySelectorAll('.botao-comprar').forEach(function (button) {
         button.addEventListener('click', function () {
-            const productName = this.getAttribute('data-product');
-            const tamanhoSelect = this.previousElementSibling;
-            const tamanhoSelecionado = tamanhoSelect.options[tamanhoSelect.selectedIndex].value;
+            const boloId = this.getAttribute('data-product-id');
+            const selectElement = this.previousElementSibling;
+            const tamanhoSelecionado = selectElement.value.toUpperCase();  // Converte o tamanho para maiúsculas
+            const sabor = this.getAttribute('data-product');
 
-            // Faz a requisição POST para adicionar o bolo ao carrinho
-            fetch('/adicionar-ao-carrinho/', {
+            const data = {
+                bolo_id: boloId,
+                tamanho: tamanhoSelecionado,
+                bolo_nome: sabor
+            };
+
+            // Obtém o valor do CSRF token
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            fetch('/adicionar_ao_carrinho/', {
                 method: 'POST',
+                body: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')  // Pega o CSRF token
-                },
-                body: JSON.stringify({
-                    'bolo_nome': productName,
-                    'tamanho': tamanhoSelecionado
-                })
+                    'X-CSRFToken': csrfToken
+                }
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
                     alert('Bolo adicionado ao carrinho com sucesso!');
-                    // Você pode também atualizar o carrinho na página, se necessário
                 } else {
                     alert('Erro ao adicionar bolo ao carrinho.');
                 }
@@ -54,6 +53,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return cookieValue;
     }
+
+    const finalizarCompraBtn = document.getElementById('finalizar-compra');
+    const carrinhoItens = document.getElementById('carrinho-itens');
+    const totalElem = document.getElementById('total');
+    let total = 0;
 
     finalizarCompraBtn.addEventListener('click', function () {
         if (total > 0) {

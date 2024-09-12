@@ -28,4 +28,5 @@ urlpatterns = [
     path('adm/', views.admin, name='adm'),
     path('adicionar_ao_carrinho/', views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
     path('listar_carrinho/', views.listar_carrinho, name='listar_carrinho'),
+    path('obter_carrinho/', views.obter_carrinho, name='obter_carrinho'),
 ]

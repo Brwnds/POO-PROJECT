@@ -75,6 +75,12 @@ def adicionar_ao_carrinho(request):
     
     return JsonResponse({'success': True})
 
+@login_required
+def obter_carrinho(request):
+    profile = Profile.objects.get(user=request.user)
+    carrinho = profile.listar_carrinho()
+    total = profile.obter_valor_total()
+    return JsonResponse({'carrinho': carrinho, 'total': str(total)})
 
 def listar_carrinho(request):
     profile = Profile.objects.get(user=request.user)

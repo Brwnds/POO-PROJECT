@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Função para atualizar o preço dinâmico
+    document.querySelectorAll('.tamanho-select').forEach(function (selectElement) {
+        selectElement.addEventListener('change', function () {
+            const selectedOption = this.options[this.selectedIndex];
+            const precoAtualizado = selectedOption.getAttribute('data-preco');
+            const precoElemento = this.closest('.card').querySelector('.preco-dinamico');
+            
+            // Atualiza o preço exibido
+            precoElemento.textContent = precoAtualizado;
+        });
+    });
+
     // Função para atualizar o carrinho
     function atualizarCarrinho() {
         fetch('/obter_carrinho/')
@@ -25,18 +37,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Atualiza o carrinho quando a página é carregada
     atualizarCarrinho();
 
-    // Código existente para adicionar bolo ao carrinho
+    // Código para adicionar bolo ao carrinho
     document.querySelectorAll('.botao-comprar').forEach(function (button) {
         button.addEventListener('click', function () {
             const boloId = this.getAttribute('data-product-id');
             const selectElement = this.previousElementSibling;
             const tamanhoSelecionado = selectElement.value.toUpperCase();
             const sabor = this.getAttribute('data-product');
+            const preco = selectElement.options[selectElement.selectedIndex].getAttribute('data-preco');
 
             const data = {
                 bolo_id: boloId,
                 tamanho: tamanhoSelecionado,
-                bolo_nome: sabor
+                bolo_nome: sabor,
+                preco: preco
             };
 
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -65,18 +79,25 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Finalizar compra
     const finalizarCompraBtn = document.getElementById('finalizar-compra');
     finalizarCompraBtn.addEventListener('click', function () {
+        const totalElem = document.getElementById('total');
+        const carrinhoItens = document.getElementById('carrinho-itens');
+
         if (parseFloat(totalElem.textContent.replace('R$ ', '')) > 0) {
             alert('Compra finalizada!');
-            fetch('/obter_carrinho/', {
+            fetch('/finalizar_compra/', {
                 method: 'POST',
                 headers: {
                     'X-CSRFToken': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 }
             }).then(() => {
+                // Limpa o conteúdo do carrinho na interface
                 carrinhoItens.innerHTML = '';
                 totalElem.textContent = 'R$ 0,00';
+            }).catch(error => {
+                console.error('Erro ao limpar o carrinho:', error);
             });
         } else {
             alert('O carrinho está vazio!');

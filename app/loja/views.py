@@ -85,3 +85,10 @@ def obter_carrinho(request):
 def listar_carrinho(request):
     profile = Profile.objects.get(user=request.user)
     return JsonResponse({'carrinho': profile.listar_carrinho()})
+
+@login_required
+def finalizar_compra(request):
+    profile = request.user.profile  # Obtém o perfil do usuário logado
+    profile.limpar_carrinho()       # Limpa o carrinho
+    return JsonResponse({'success': True})
+

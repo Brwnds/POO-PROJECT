@@ -49,7 +49,7 @@
     </div>
 </aside>
    <!-- Conteúdo do Catálogo -->
-<div id="catalogo">
+   <div id="catalogo">
     <section class="categoria">
         <div class="card-container">
             <div class="card-row">
@@ -57,7 +57,7 @@
                 <div class="card">
                     <img src="{{ bolo.imagem_url }}" alt="{{ bolo.sabor }}">
                     <h3>{{ bolo.sabor }}</h3>
-                    <p class="preco">Pequeno: R$ {{ bolo.preco_pequeno }}</p>
+                    <p class="preco"> R$ <span class="preco-dinamico">{{ bolo.preco_pequeno }}</span></p>
                     <p class="tamanho">Tamanhos:</p>
                     <select class="tamanho-select">
                         <option value="P" data-preco="{{ bolo.preco_pequeno }}">P - R$ {{ bolo.preco_pequeno }}</option>

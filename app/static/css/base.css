@@ -14,8 +14,8 @@ body {
 	font-family: "Quicksand", sans-serif;
 	background-color: #f2f5f7;
 	line-height: 1.5;
-	min-height: 300vh;
 	position: relative;
+	overflow-x: hidden;
 }
 
 header {

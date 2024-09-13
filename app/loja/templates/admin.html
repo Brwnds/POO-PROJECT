@@ -1,15 +1,124 @@
 {% extends 'base.html' %}
-    
+
 {% load static %}
-    
+
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+   <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
 {% endblock %}
 
 {% block content %}
-    <div> admin </div>
-{% endblock %}
-
-{% block extra_js %}
-
+<div id="div_form">
+            <!-- Formulário de perfil do usuário -->
+            <div class="form" id="profileSection">
+                <h1>Perfil do Usuário</h1>
+    
+                <!-- Exibição de dados do usuário -->
+                <div id="profile">
+                    <p><strong>Nome:</strong> <span id="userName">{{ user.username }}</span></p>
+                    <p><strong>Senha:</strong> <span id="userPassword">********</span></p>
+                </div>
+    
+                <!-- Botões de ação -->
+                <button class="form--submit" onclick="editProfile()">Editar Perfil</button>
+                <button class="form--submit" onclick="deleteProfile()">Deletar Perfil</button>
+                <!-- Botão para voltar para o catálogo -->
+                <button class="form--submit" onclick="goToCatalog()">Voltar para o Catálogo</button>
+            </div>
+    
+            <!-- Modal para editar o perfil -->
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <h2>Editar Perfil</h2>
+                    <label for="username">Nome de Usuário (Atual):</label>
+                    <input type="text" id="username" class="form--input" value="{{ user.username }}" disabled>
+                    
+                    <label for="name">Novo nome:</label>
+                    <input type="text" id="name" class="form--input" placeholder="Digite novo nome de usuário">
+    
+                    <label for="currentPassword">Senha Atual:</label>
+                    <input type="text" id="currentPassword" class="form--input" value="********" disabled>
+    
+                    <label for="newPassword">Nova Senha:</label>
+                    <input type="password" id="newPassword" class="form--input" placeholder="Digite nova senha">
+                    
+                    <div>
+                        <input type="checkbox" id="showNewPassword" onclick="toggleNewPasswordVisibility()">
+                        <label for="showNewPassword">Mostrar Senha</label>
+                    </div>
+                    
+                    <button class="form--submit" onclick="saveProfile()">Salvar</button>
+                    <button class="form--submit" onclick="closeModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            let currentPasswordValue = '********'; // Valor inicial da senha atual
+    
+            // Função para abrir o modal de edição
+            function editProfile() {
+                // Preenche os campos com os valores atuais
+                document.getElementById('username').value = document.getElementById('userName').textContent;
+                document.getElementById('name').value = '';
+                document.getElementById('currentPassword').value = currentPasswordValue; // Exibe a senha atual
+                document.getElementById('newPassword').value = '';
+    
+                // Abre o modal
+                document.getElementById('editModal').style.display = 'flex';
+            }
+    
+            // Função para fechar o modal
+            function closeModal() {
+                document.getElementById('editModal').style.display = 'none';
+            }
+    
+            // Função para salvar os dados editados
+            function saveProfile() {
+                // Pega os novos valores dos inputs
+                let username = document.getElementById('username').value;
+                let name = document.getElementById('name').value;
+                let newPassword = document.getElementById('newPassword').value;
+    
+                // Atualiza o nome apenas se o campo de novo nome não estiver vazio
+                if (name) {
+                    document.getElementById('userName').textContent = name;
+                }
+    
+                // Atualiza a senha apenas se a nova senha não estiver vazia
+                if (newPassword) {
+                    document.getElementById('userPassword').textContent = "********"; // Não mostra a nova senha por segurança
+                    currentPasswordValue = newPassword; // Atualiza a senha atual
+                    document.getElementById('currentPassword').value = currentPasswordValue; // Exibe a senha atual
+                }
+    
+                // Fecha o modal
+                closeModal();
+            }
+            
+            // Função para deletar o perfil e redirecionar para a página de cadastro
+            function deleteProfile() {
+                if (confirm("Você tem certeza que deseja deletar seu perfil?")) {
+                    // Aqui você pode adicionar a lógica para excluir o perfil do backend
+    
+                    // Redireciona para a página de cadastro existente
+                    window.location.href = "{% url 'cadastro' %}"; // Substitua pelo caminho da sua página de cadastro
+                }
+            }
+    
+            // Função para voltar para o catálogo
+            function goToCatalog() {
+                window.location.href = "{% url 'catalogo' %}"; // Substitua pelo caminho da sua página de catálogo
+            }
+    
+            // Função para mostrar ou esconder a nova senha
+            function toggleNewPasswordVisibility() {
+                const newPasswordInput = document.getElementById('newPassword');
+                const showPasswordCheckbox = document.getElementById('showNewPassword');
+                if (showPasswordCheckbox.checked) {
+                    newPasswordInput.type = 'text';
+                } else {
+                    newPasswordInput.type = 'password';
+                }
+            }
+</script>
 {% endblock %}

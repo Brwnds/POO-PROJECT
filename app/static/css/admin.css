@@ -1,0 +1,327 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap");
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  background-color: #0d0a0b;
+  background: linear-gradient(145deg, #55566a 0%, #131318 76%);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#div_form {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  background: -webkit-linear-gradient(0deg, #f76591, #ffc16f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form--input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 24px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.form--submit {
+  width: 100%;
+  padding: 14px;
+  background-color: #f76591;
+  background-image: linear-gradient(-180deg, #ffc16f, #f76591);
+  font-size: clamp(1rem, 8vw, 1.2rem);
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  margin-bottom: 10px;
+}
+
+.form--submit:hover {
+  box-shadow: 0 6px 12px rgba(247, 101, 145, 0.5);
+  transform: scale(0.98);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&display=swap");
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  background-color: #0d0a0b;
+  background: linear-gradient(145deg, #55566a 0%, #131318 76%);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#div_form {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  background: -webkit-linear-gradient(0deg, #f76591, #ffc16f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form--input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 24px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.form--submit {
+  width: 100%;
+  padding: 14px;
+  background-color: #f76591;
+  background-image: linear-gradient(-180deg, #ffc16f, #f76591);
+  font-size: clamp(1rem, 8vw, 1.2rem);
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  margin-bottom: 10px;
+}
+
+.form--submit:hover {
+  box-shadow: 0 6px 12px rgba(247, 101, 145, 0.5);
+  transform: scale(0.98);
+}
+
+/* Estilo do contêiner do modal */
+.modal {
+  display: none;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente do contêiner do modal */
+  z-index: 1000; /* Certifique-se de que o modal esteja acima de outros elementos */
+}
+
+/* Estilo do conteúdo do modal */
+.modal-content {
+  background-color: white; /* Fundo branco do conteúdo do modal */
+  padding: 40px;
+  border-radius: 10px;
+  width: 65%; /* Ajuste a largura do modal */
+  max-width: 1000px; /* Ajusta o tamanho máximo para evitar que o modal ocupe toda a largura */
+  max-height: 80vh; /* Limita a altura máxima do modal */
+  overflow-y: auto; /* Permite rolagem caso o conteúdo exceda a altura */
+  box-sizing: border-box; /* Inclui o padding e border na largura e altura total */
+}
+
+/* Outros estilos */
+.modal-content label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #666;
+}
+
+.modal-content input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.modal-content div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-content div label {
+  font-size: 16px;
+}
+
+/* Ajuste para os campos de senha */
+.modal-content #newPassword,
+.modal-content #currentPassword {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 24px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.modal-content #showPasswordCheckbox {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Efeito de hover nos botões do modal */
+.modal-content button {
+  width: 100%;
+  padding: 14px;
+  background-color: #f76591;
+  background-image: linear-gradient(-180deg, #ffc16f, #f76591);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.modal-content button:hover {
+  box-shadow: 0 6px 12px rgba(247, 101, 145, 0.5);
+  transform: scale(0.98);
+}
+
+/* Customizações adicionais */
+input[type="checkbox"]:checked + label {
+  color: #f76591;
+}
+
+
+
+
+.modal-content label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #666;
+}
+
+.modal-content input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.modal-content div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-content div label {
+  font-size: 16px;
+}
+
+/* Ajuste para os campos de senha */
+.modal-content #newPassword,
+.modal-content #currentPassword {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 24px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.modal-content #showPasswordCheckbox {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Efeito de hover nos botões do modal */
+.modal-content button {
+  width: 100%;
+  padding: 14px;
+  background-color: #f76591;
+  background-image: linear-gradient(-180deg, #ffc16f, #f76591);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.modal-content button:hover {
+  box-shadow: 0 6px 12px rgba(247, 101, 145, 0.5);
+  transform: scale(0.98);
+}
+
+/* Customizações adicionais */
+input[type="checkbox"]:checked + label {
+  color: #f76591;
+}

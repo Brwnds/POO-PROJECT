@@ -7,7 +7,60 @@
 {% endblock %}
 
 {% block content %}
-    <div> basket </div>
+<div class="container">
+
+    <!-- Itens Selecionados -->
+    <div class="items">
+        <h1 class="items-title">Carrinho de Compras</h1> <!-- Mover o título para dentro da div items -->
+
+        <h2>Itens Selecionados</h2>
+
+        <div class="item-header">
+            <span>Imagem</span>
+            <span>Bolo</span>
+            <span>Descrição</span> <!-- Nova coluna para descrição -->
+            <span>Quantidade</span>
+            <span>Tamanho</span>
+            <span>Preço</span>
+        </div>
+        
+        <div class="item">
+            <img class="bolo-cenoura-img" src="https://i.pinimg.com/736x/86/36/05/863605eadbfc00ef756820c8ab473f60.jpg" alt="Bolo de Cenoura com Chocolate">
+            <div class="item-details">
+                <span class="item-name">Bolo de Cenoura</span>
+                <span class="item-description">Delicioso bolo de cenoura com cobertura de chocolate.</span> <!-- Descrição do item -->
+                <span class="item-quantity">2</span>
+                <span class="item-size">Médio</span>
+                <span class="item-price">R$ 30,00</span>
+            </div>
+        </div>
+        
+        <div class="item">
+            <img src="https://i.pinimg.com/564x/89/6d/3f/896d3f64085d7bc6535ef13c10fbdcaf.jpg" alt="Morango dos Deuses">
+            <div class="item-details">
+                <span class="item-name">Morango dos Deuses</span>
+                <span class="item-description">Bolo de morango fresco com creme de baunilha.</span> <!-- Descrição do item -->
+                <span class="item-quantity">1</span>
+                <span class="item-size">Grande</span>
+                <span class="item-price">R$ 70,00</span>
+            </div>
+        </div>
+
+    <!-- Resumo da Compra -->
+    <div class="summary">
+        <h2>Resumo do Pedido</h2>
+        <div class="summary-item">
+            <span class="item-name">Total de Itens:</span>
+            <span class="item-value" id="total-itens">3</span>
+        </div>
+
+        <div class="summary-item">
+            <span class="item-name total">Total:</span>
+            <span class="item-value total" id="total">R$ 110,00</span>
+        </div>
+        <button class="checkout-btn">Finalizar Pedido</button>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}

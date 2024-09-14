@@ -105,25 +105,32 @@ def finalizar_compra(request):
 @login_required
 def editar_perfil(request):
     if request.method == 'POST':
-        new_name = request.POST.get('name')
-        new_password = request.POST.get('newPassword')
+        user = request.user
+        novo_nome = request.POST.get('name')
+        nova_senha = request.POST.get('newPassword')
+        
+        # Atualiza o nome do usuário
+        if novo_nome:
+            user.username = novo_nome
+        
+        # Atualiza a senha do usuário
+        if nova_senha:
+            user.set_password(nova_senha)
+        
+        # Salva as mudanças no usuário
+        user.save()
 
-        # Atualiza o nome de usuário
-        if new_name:
-            request.user.username = new_name
-            request.user.save()
+        # Desloga o usuário para que ele precise logar novamente com os novos dados
+        logout(request)
 
-        # Atualiza a senha se fornecida
-        if new_password:
-            user = request.user
-            user.set_password(new_password)
-            user.save()
-            update_session_auth_hash(request, user)  # Mantém o usuário logado após a alteração da senha
+        # Adiciona uma mensagem de sucesso
+        messages.success(request, 'Seu perfil foi atualizado com sucesso. Por favor, faça login com suas novas credenciais.')
 
-        messages.success(request, 'Perfil atualizado com sucesso!')
-        return redirect('adm')  # Redireciona para a página de administração
+        # Redireciona para a página de login
+        return redirect('login')
 
-    return redirect('adm')  # Redireciona para a página de administração se a requisição não for POST
+    # Caso seja GET, renderiza a página de edição de perfil
+    return render(request, 'editar_perfil.html')
 
 @login_required
 def deletar_perfil(request):

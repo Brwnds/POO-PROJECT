@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, logout as logout_view, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
@@ -26,6 +26,12 @@ def login(request):
             messages.error(request, "Nome de usuário ou senha incorretos")
     
     return render(request, 'login.html')
+
+def logout(request):
+    logout_view(request)
+    return redirect('login')
+    
+    
 
 def cadastro(request):
     if request.method == "POST":
@@ -61,20 +67,34 @@ def admin(request):
 @require_POST
 def adicionar_ao_carrinho(request):
     data = json.loads(request.body)
-    bolo_nome = data['bolo_nome']
-    tamanho = data['tamanho']
-    
-    # Encontra o bolo pelo nome
-    bolo = get_object_or_404(Bolo, sabor=bolo_nome)
-    
+    bolo_id = data['bolo_id']  # Agora recebemos o id do bolo
+    tamanho = data['tamanho'].upper()  # Converte o tamanho para maiúsculas
+
+    # Encontra o bolo pelo ID
+    bolo = get_object_or_404(Bolo, id=bolo_id)
+
     # Obtém o perfil do usuário
     profile = Profile.objects.get(user=request.user)
-    
+
     # Adiciona o bolo ao carrinho
     profile.adicionar_bolo_ao_carrinho(bolo, tamanho)
     
     return JsonResponse({'success': True})
 
+@login_required
+def obter_carrinho(request):
+    profile = Profile.objects.get(user=request.user)
+    carrinho = profile.listar_carrinho()
+    total = profile.obter_valor_total()
+    return JsonResponse({'carrinho': carrinho, 'total': str(total)})
+
 def listar_carrinho(request):
     profile = Profile.objects.get(user=request.user)
     return JsonResponse({'carrinho': profile.listar_carrinho()})
+
+@login_required
+def finalizar_compra(request):
+    profile = request.user.profile  # Obtém o perfil do usuário logado
+    profile.limpar_carrinho()       # Limpa o carrinho
+    return JsonResponse({'success': True})
+

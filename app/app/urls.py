@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from loja import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,7 @@ urlpatterns = [
     path('adm/', views.admin, name='adm'),
     path('adicionar_ao_carrinho/', views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
     path('listar_carrinho/', views.listar_carrinho, name='listar_carrinho'),
+    path('obter_carrinho/', views.obter_carrinho, name='obter_carrinho'),
+    path('finalizar_compra/', views.finalizar_compra, name='finalizar_compra'),
+    path('logout/', views.logout, name='logout'),
 ]

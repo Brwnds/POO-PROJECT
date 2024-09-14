@@ -11,8 +11,7 @@
     <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
     {% block extra_css %}{% endblock %}
 </head>
-<body>
-        <!-- Sticky header -->
+<body>   <!-- Sticky header -->
 <header class="header-outer">
     <div class="header-inner responsive-wrapper">
         <div class="header-logo">
@@ -21,7 +20,7 @@
         <nav class="header-navigation">
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'catalogo' %}">Catálogo</a>
-            <a href="{% url 'adm' %}" style="text-decoration: none;">
+            <a id="user-icon" style="text-decoration: none; cursor: pointer;">
                 <lord-icon
                     src="https://cdn.lordicon.com/bhfjfgqz.json"
                     trigger="hover"
@@ -30,6 +29,11 @@
                     style="width:40px;height:40px">
                 </lord-icon>
             </a>
+            <div id="user-popup" class="popup hidden" data-is-superuser="{{ user.is_superuser }}">
+                <p>Olá, {{ user.first_name }}</p>
+                <a id="edit-profile-link" href="#">Perfil</a><br>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
             <a href="{% url 'basket' %}">
                 <lord-icon
                     src="https://cdn.lordicon.com/odavpkmb.json"
@@ -42,12 +46,12 @@
         </nav>
     </div>
 </header>
-
     <main>
         {% block content %}
         <!-- O conteúdo específico de cada página será inserido aqui -->
         {% endblock %}
     </main>
+    <script src="{% static 'js/base.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

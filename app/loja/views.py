@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, logout as logout_view, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
@@ -26,6 +26,12 @@ def login(request):
             messages.error(request, "Nome de usuário ou senha incorretos")
     
     return render(request, 'login.html')
+
+def logout(request):
+    logout_view(request)
+    return redirect('login')
+    
+    
 
 def cadastro(request):
     if request.method == "POST":

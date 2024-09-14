@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projetinho duda</title>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
 
@@ -14,11 +15,13 @@
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-                <li>{{ message }}</li>
+                <li class="{{ message.tags }}">{{ message }}</li>
             {% endfor %}
         </ul>
-        {% endif %}
-
+    {% endif %}
+    
+    <!-- O restante do formulário de login -->
+    
         {% csrf_token %}
         <h1>Entrar</h1>
         <label for="username">Usuário</label>

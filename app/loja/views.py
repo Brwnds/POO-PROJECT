@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from .models import Bolo, Profile
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import get_user_model
 import json
 
 
@@ -97,4 +101,45 @@ def finalizar_compra(request):
     profile = request.user.profile  # Obtém o perfil do usuário logado
     profile.limpar_carrinho()       # Limpa o carrinho
     return JsonResponse({'success': True})
+
+@login_required
+def editar_perfil(request):
+    if request.method == 'POST':
+        user = request.user
+        novo_nome = request.POST.get('name')
+        nova_senha = request.POST.get('newPassword')
+        
+        # Atualiza o nome do usuário
+        if novo_nome:
+            user.username = novo_nome
+        
+        # Atualiza a senha do usuário
+        if nova_senha:
+            user.set_password(nova_senha)
+        
+        # Salva as mudanças no usuário
+        user.save()
+
+        # Desloga o usuário para que ele precise logar novamente com os novos dados
+        logout(request)
+
+        # Adiciona uma mensagem de sucesso
+        messages.success(request, 'Seu perfil foi atualizado com sucesso. Por favor, faça login com suas novas credenciais.')
+
+        # Redireciona para a página de login
+        return redirect('login')
+
+    # Caso seja GET, renderiza a página de edição de perfil
+    return render(request, 'editar_perfil.html')
+
+@login_required
+def deletar_perfil(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()  # Remove o usuário e todas as suas associações
+        
+        messages.success(request, 'Perfil excluído com sucesso!')
+        return redirect('cadastro')  # Redireciona para a página de cadastro ou login
+
+    return redirect('adm')  # Redireciona para a página de administração se a requisição não for POST
 

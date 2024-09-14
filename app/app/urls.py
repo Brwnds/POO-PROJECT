@@ -32,4 +32,6 @@ urlpatterns = [
     path('obter_carrinho/', views.obter_carrinho, name='obter_carrinho'),
     path('finalizar_compra/', views.finalizar_compra, name='finalizar_compra'),
     path('logout/', views.logout, name='logout'),
+    path('editar_perfil/', views.editar_perfil, name='editar_perfil'),
+    path('deletar_perfil/', views.deletar_perfil, name='deletar_perfil'),
 ]

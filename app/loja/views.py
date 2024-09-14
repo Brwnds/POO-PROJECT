@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from .models import Bolo, Profile
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import get_user_model
 import json
 
 
@@ -97,4 +101,38 @@ def finalizar_compra(request):
     profile = request.user.profile  # Obtém o perfil do usuário logado
     profile.limpar_carrinho()       # Limpa o carrinho
     return JsonResponse({'success': True})
+
+@login_required
+def editar_perfil(request):
+    if request.method == 'POST':
+        new_name = request.POST.get('name')
+        new_password = request.POST.get('newPassword')
+
+        # Atualiza o nome de usuário
+        if new_name:
+            request.user.username = new_name
+            request.user.save()
+
+        # Atualiza a senha se fornecida
+        if new_password:
+            user = request.user
+            user.set_password(new_password)
+            user.save()
+            update_session_auth_hash(request, user)  # Mantém o usuário logado após a alteração da senha
+
+        messages.success(request, 'Perfil atualizado com sucesso!')
+        return redirect('adm')  # Redireciona para a página de administração
+
+    return redirect('adm')  # Redireciona para a página de administração se a requisição não for POST
+
+@login_required
+def deletar_perfil(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()  # Remove o usuário e todas as suas associações
+        
+        messages.success(request, 'Perfil excluído com sucesso!')
+        return redirect('cadastro')  # Redireciona para a página de cadastro ou login
+
+    return redirect('adm')  # Redireciona para a página de administração se a requisição não for POST
 

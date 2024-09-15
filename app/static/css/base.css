@@ -170,12 +170,22 @@ header {
 #user-popup {
 	position: absolute; /* Posiciona o popup em relação ao ícone */
     top: 100%; /* Coloca o popup imediatamente abaixo do ícone */
-    left: 0; /* Alinha o popup à esquerda do ícone */
-    margin-top: 5px; /* Espaçamento entre o ícone e o popup */
+    left: 50%; /* Alinha o popup à esquerda do ícone */
+    margin-top: 16px; /* Espaçamento entre o ícone e o popup */
     display: none; /* Inicialmente escondido */
     background-color: white; /* Cor de fundo do popup */
     border: 1px solid #ccc; /* Borda do popup */
-    padding: 10px; /* Espaçamento interno do popup */
+    padding: 15px; /* Espaçamento interno do popup */
     box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Sombra para dar destaque */
     z-index: 1000; /* Garante que o popup esteja acima de outros elementos */
+	border-radius: 5px;
+}
+
+#user-popup * {
+	text-decoration: none;
+	font-size: 16px;
+}
+
+#edit-profile-link{
+	margin-bottom: 10px;
 }

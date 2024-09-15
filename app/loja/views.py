@@ -88,7 +88,17 @@ def adicionar_ao_carrinho(request):
 @login_required
 def obter_carrinho(request):
     profile = Profile.objects.get(user=request.user)
-    carrinho = profile.listar_carrinho()
+    carrinho = []
+    for item in profile.listar_carrinho():
+        bolo = Bolo.objects.get(id=item['bolo_id'])
+        carrinho.append({
+            'bolo_nome': bolo.sabor,
+            'descricao': bolo.descricao,
+            'imagem_url': bolo.imagem_url,
+            'tamanho': item['tamanho'],
+            'preco': item['preco'],
+            'quantidade': item['quantidade']
+        })
     total = profile.obter_valor_total()
     return JsonResponse({'carrinho': carrinho, 'total': str(total)})
 

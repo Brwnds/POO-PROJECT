@@ -78,29 +78,4 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
-
-    // Finalizar compra
-    const finalizarCompraBtn = document.getElementById('finalizar-compra');
-    finalizarCompraBtn.addEventListener('click', function () {
-        const totalElem = document.getElementById('total');
-        const carrinhoItens = document.getElementById('carrinho-itens');
-
-        if (parseFloat(totalElem.textContent.replace('R$ ', '')) > 0) {
-            alert('Compra finalizada!');
-            fetch('/finalizar_compra/', {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                }
-            }).then(() => {
-                // Limpa o conteúdo do carrinho na interface
-                carrinhoItens.innerHTML = '';
-                totalElem.textContent = 'R$ 0,00';
-            }).catch(error => {
-                console.error('Erro ao limpar o carrinho:', error);
-            });
-        } else {
-            alert('O carrinho está vazio!');
-        }
-    });
 });

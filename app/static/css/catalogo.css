@@ -159,8 +159,8 @@ nav {
 
 .card-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: wrap; /* Permite que os cards se movam para a linha seguinte */
+  gap: 20px; /* Espaço entre os cards */
   margin-bottom: 20px;
 }
 
@@ -176,15 +176,15 @@ nav {
   border: 1px solid var(--input-border);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 32%;
+  width: calc(33.333% - 20px); /* Três cards por linha, com espaço entre eles */
   height: 430px;
-  margin-bottom: 30px;
   padding: 15px;
   text-align: center;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box; /* Inclui padding e border na largura total */
 }
 
 .card img {

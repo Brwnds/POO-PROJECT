@@ -62,7 +62,11 @@ def catalogo(request):
 
 @login_required
 def basket(request):
-    return render(request, 'basket.html')
+    profile = Profile.objects.get(user=request.user)
+    carrinho = profile.listar_carrinho()  # Obtém o carrinho do usuário
+    total = profile.obter_valor_total()  # Calcula o total
+    return render(request, 'basket.html', {'carrinho': carrinho, 'total': total})
+
 
 @login_required
 def admin(request):

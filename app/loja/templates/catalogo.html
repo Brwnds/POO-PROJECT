@@ -76,7 +76,9 @@
        <h2>Carrinho de Compras</h2>
        <div id="carrinho-itens"></div>
        <p>Total: <span id="total">R$ 0,00</span></p>
-       <button id="finalizar-compra">Finalizar Compra</button>
+       <a href="{% url 'basket' %}" style="text-decoration: none;">
+        <button id="finalizar-compra">Visualizar Carrinho</button>
+       </a>
    </aside>
 </div>
 {% endblock %}

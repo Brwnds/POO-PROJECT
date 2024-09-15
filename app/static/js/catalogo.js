@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
-
+  
     // Finalizar compra
     const finalizarCompraBtn = document.getElementById('finalizar-compra');
     finalizarCompraBtn.addEventListener('click', function () {

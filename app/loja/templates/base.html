@@ -32,7 +32,7 @@
                 </lord-icon>
             </a>
             <div id="user-popup" class="popup hidden" data-is-superuser="{{ user.is_superuser }}">
-                <p>Olá, {{ user.first_name }}</p>
+                <p>Olá, {{ user.username }}</p>
                 <a id="edit-profile-link" href="#">Perfil</a><br>
                 <a href="{% url 'logout' %}">Logout</a>
             </div>

@@ -48,29 +48,28 @@
         </ul>
     </div>
 </aside>
+
    <!-- Conteúdo do Catálogo -->
    <div id="catalogo">
-    <section class="categoria">
-        <div class="card-container">
-            <div class="card-row">
-                {% for bolo in bolos %}
-                <div class="card">
-                    <img src="{{ bolo.imagem_url }}" alt="{{ bolo.sabor }}">
-                    <h3>{{ bolo.sabor }}</h3>
-                    <p class="preco"> R$ <span class="preco-dinamico">{{ bolo.preco_pequeno }}</span></p>
-                    <p class="tamanho">Tamanhos:</p>
-                    <select class="tamanho-select">
-                        <option value="P" data-preco="{{ bolo.preco_pequeno }}">Pequeno - R$ {{ bolo.preco_pequeno }}</option>
-                        <option value="M" data-preco="{{ bolo.preco_medio }}">Médio - R$ {{ bolo.preco_medio }}</option>
-                        <option value="G" data-preco="{{ bolo.preco_grande }}">Grande - R$ {{ bolo.preco_grande }}</option>
-                    </select>
-                    <button class="botao-comprar" data-product-id="{{ bolo.id }}" data-product="{{ bolo.sabor }}">Comprar</button>                    
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-</div>
+       <section class="categoria">
+           <div class="card-container">
+               {% for bolo in bolos %}
+               <div class="card">
+                   <img src="{{ bolo.imagem_url }}" alt="{{ bolo.sabor }}">
+                   <h3>{{ bolo.sabor }}</h3>
+                   <p class="preco">R$ <span class="preco-dinamico">{{ bolo.preco_pequeno }}</span></p>
+                   <p class="tamanho">Tamanhos:</p>
+                   <select class="tamanho-select">
+                       <option value="P" data-preco="{{ bolo.preco_pequeno }}">Pequeno - R$ {{ bolo.preco_pequeno }}</option>
+                       <option value="M" data-preco="{{ bolo.preco_medio }}">Médio - R$ {{ bolo.preco_medio }}</option>
+                       <option value="G" data-preco="{{ bolo.preco_grande }}">Grande - R$ {{ bolo.preco_grande }}</option>
+                   </select>
+                   <button class="botao-comprar" data-product-id="{{ bolo.id }}" data-product="{{ bolo.sabor }}">Comprar</button>                    
+               </div>
+               {% endfor %}
+           </div>
+       </section>
+   </div>
 
    <!-- Carrinho de Compras -->
    <aside id="carrinho" class="carrinho">

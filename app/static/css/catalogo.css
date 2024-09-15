@@ -38,10 +38,15 @@ header {
 
 h1 {
   font-family: "Dancing Script", cursive;
-  font-size: clamp(2.5rem, 4vw, 3rem);
+  font-size: clamp(2.5rem, 4vw, 6rem);
   font-weight: 700;
-  color: var(--text-color);
-  margin-bottom: 20px;
+  background: -webkit-linear-gradient(0deg, #f4b942, #ff6f61);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-bottom: 36px;
+  padding-left: 10px;
 }
 
 nav {

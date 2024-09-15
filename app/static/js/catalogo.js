@@ -66,10 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('Bolo adicionado ao carrinho com sucesso!');
                     atualizarCarrinho();  // Atualiza o carrinho após adicionar um bolo
-                } else {
-                    alert('Erro ao adicionar bolo ao carrinho.');
                 }
             })
             .catch(error => {
@@ -86,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const carrinhoItens = document.getElementById('carrinho-itens');
 
         if (parseFloat(totalElem.textContent.replace('R$ ', '')) > 0) {
-            alert('Compra finalizada!');
+            alert('Pedido Selecionado com Sucesso!');
             fetch('/finalizar_compra/', {
                 method: 'POST',
                 headers: {

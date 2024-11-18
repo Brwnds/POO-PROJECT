@@ -54,7 +54,7 @@ Este projeto foi criado por uma equipe dedicada de desenvolvedoras:
 | Nome                        | Função                    | Contato                                |
 |-----------------------------|---------------------------|----------------------------------------|
 | **Brenda Beatriz Maciel da Silva** | Desenvolvedora Full Stack e Analista de Dados| contatobrendabeatriz@gmail.com         |
-| **Maria Eduarda Quaresma**   | Desenvolvedora   |eduardaq2805@gmail.com           |
+| **Maria Eduarda Quaresma**   | Desenvolvedora  Full Stack e Analista de Dados   |eduardaq2805@gmail.com           |
 
 <br>
 
